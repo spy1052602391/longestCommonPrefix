@@ -1,0 +1,38 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length == 0){
+            return "";
+        }
+        char[] c1 = strs[0].toCharArray();
+        int j = 0;
+        String str1 = new String();
+        String str2 = strs[0];
+        for(int i=1; i < strs.length; i++){
+            if(strs[i] == null){
+                return "";
+            }
+            char[] c = strs[i].toCharArray();
+            j = 0;
+            str1 = "";
+            while(j<c.length && j<c1.length){
+                if(c[j] == c1[j]){
+                    str1 = str1+c[j];
+                    j++;
+                }else{
+                    break;
+                }
+            }
+            str2 = str1;
+            c1 = str2.toCharArray();
+        }
+        return str2;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        String[] str = new String[]{"aaa","aa","aaa"};
+        System.out.println(sol.longestCommonPrefix(str));
+    }
+}
